@@ -1,0 +1,82 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/classicblue8/classicblue8.github.io/main/adatbazis.csv",
+    "format": {"type": "csv"}
+  },
+  "params": [
+    {
+      "name": "selectedXAxis",
+      "value": "Consumption",
+      "bind": {
+        "input": "select",
+        "options": ["Employment",
+          "Consumption",
+          "Production",
+          "Cons_Capita",
+          "Nr_Breweries",
+          "Excise_Duty",
+          "Import",
+          "Export"],
+        "name": "X tengely: "
+      }
+    },
+    {
+      "name": "selectedYAxis",
+      "value": "Production",
+      "bind": {
+        "input": "select",
+        "options": ["Employment",
+          "Consumption",
+          "Production",
+          "Cons_Capita",
+          "Nr_Breweries",
+          "Excise_Duty",
+          "Import",
+          "Export"],
+        "name": "Y tengely: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "datum[selectedXAxis] != null && datum[selectedYAxis] != null && datum.Year == 2022"
+    },
+    {"calculate": "datum.id === 'RO' ? 1 : 0", "as": "highlight"},
+    {"calculate": "datum[selectedXAxis]", "as": "metricValuex"},
+    {"calculate": "datum[selectedYAxis]", "as": "metricValuey"}
+  ],
+  "mark": {"type": "circle", "tooltip": true, "size": 100},
+  "encoding": {
+    "x": {
+      "field": "metricValuex",
+      "type": "quantitative",
+      "title": {"signal": "selectedXAxis"}
+    },
+    "y": {
+      "field": "metricValuey",
+      "type": "quantitative",
+      "title": {"signal": "selectedYAxis"}
+    },
+    "color": {
+      "field": "highlight",
+      "type": "nominal",
+      "scale": {"domain": [0, 1], "range": ["#0096FF", "#ff5722"]},
+      "legend": null
+    },
+    "tooltip": [
+      {"field": "id", "title": "Country"},
+      {"field": "metricValuex", "title": {"signal": "selectedXAxis"}},
+      {"field": "metricValuey", "title": {"signal": "selectedYAxis"}}
+    ],
+    "text": {"field": "id", "type": "nominal"}
+  },
+  "title": {
+    "text": "A kiválasztott mutatók szórásdiagramja 2022-ben",
+    "subtitleFont": "Arial",
+    "subtitleFontWeight": "lighter"
+  },
+  "width": 655,
+  "height": 655,
+  "config": {"view": {"stroke": "transparent"}}
+}

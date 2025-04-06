@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>    
+    <link rel="stylesheet" type="text/css" href="s2_example1.css">
+    <title>A sör Európában</title> 
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script> 
+</head>
+
+<body> 
+    <h1 class="big" style="margin-bottom: 0px;"> 
+        Európai sörtrendek
+    </h1>
+    <p style="margin-top: 0px; color: darkblue">
+        Ördög Krisztián
+    </p>
+    <h3 class="small"> 
+        A projekt célja az európai sörtrendek elemzése és bemutatása a legfrissebb statisztikai adatok alapján. 
+        Ez magában foglalja a sörtermelés, fogyasztás, fogyasztás/fő, export-import, jövedéki adók és a sörfőzdék 
+        számának alakulását 2016 és 2022 között, különös tekintettel a 2022-es évre.
+    </h3>
+
+    <section>
+        <div class="chart-description">
+            <h2>Felhasznált adatok</h2>
+            <p> <ul>
+                <li>Sörtermelés és fogyasztás országonkénti bontásban 2016-2022 (1000 hektoliter)</li>
+                <li>Fejenkénti sörfogyasztás 2016-2022 (liter/fő/év)</li>
+                <li>On-trade (helyszíni fogyasztás) és off-trade (bolti értékesítés) arányok 2016-2022</li>
+                <li>
+                    Import és export adatok 2017-2022 (1000 hektoliter)
+                </li>
+                <li>Sör import és export adatok EU-n kívül és belül 2022 (1000 hektoliter)</li>
+                <li>Aktív sörfőzdék száma 2016-2022</li>
+                <li>Közvetlen foglalkoztatás a söriparban 2016-2022 </li>
+                <li>Adóbevételek a söriparból 2016-2022 (millió euró)</li>
+              </ul>
+              Adatok forrása: https://brewersofeurope.eu/
+            </p>
+            <p>
+                Az adatok bemutatják az európai söripar alakulását 2016 és 2022 között. Az import és export adatok rámutatnak az európai 
+                sörök nemzetközi piacra gyakorolt hatásaira, míg a sörfőzdék számának növekedése a sörpiac dinamikus változását és a kézműves
+                 sörök iránti keresletet mutatja. Az on-trade és off-trade arányok pedig a fogyasztói szokások változását tükrözik.
+            </p>
+            <p>
+                A projekt hasznos lehet sörkedvelőknek, az iparág iránt érdeklődőknek, amely által megérthetik a söripar jelenlegi helyzetét, a piaci trendeket, valamint a sörfogyasztási szokások és termelési adatok változásait Európában.
+            </p>
+        </div>
+        <figure id="Terkep"></figure> 
+    </section>
+
+    <section>
+        <div class="chart-description">
+            <h2>Adatok éves bontásban</h2>
+            <p> Az adatok bemutatják a söripar alakulását. Megfigyelhető a COVID-19 járvány hatása és az azt követő helyreállás.
+            </p>
+        </div>
+        <figure id="Oszlop"></figure> 
+        <figure id="Line"></figure> 
+    </section>
+
+    <section>
+        <div class="chart-description">
+            <h2>Összehasonlítás</h2>
+            <p> Az ábra segítségével vizuálisan vizsgálhatjuk, hogy van-e korreláció a kiválasztott mutatók között. Például a termelést és fogyasztást kiválasztva láthatjuk, hogy azok az országok, ahol magas a sörfogyasztás, általában több sört is termelnek-e.
+            </p>
+        </div>
+        <figure id="Compare"></figure> 
+    </section>
+
+    <section>
+        <div class="chart-description">
+            <h2>A helyszíni fogyasztás és bolti értékesítás megoszlása</h2>
+            <p> Az adatok alapján megfigyelhetők a sörfogyasztási szokások trendjei, például az európai országok
+                 többsége a nem preferálja a helyszíni fogyasztást. A nyugat-európai országok lakosai, mint Portugália, Írország vagy Spanyolország, 
+                 inkább a helyszínen fogyasztják el italukat, hiszen arányuk 60% fölötti.
+            </p>
+        </div>
+        <figure id="Onoff"></figure> 
+    </section>
+    
+    <section>
+        <div class="chart-description">
+            <h2>Export és import</h2>
+            <p> Az export és import adatok rámutatnak az európai sörök nemzetközi piacra gyakorolt hatásaira. 
+                Németország, Spanyolország, Hollandia, Olaszország exportjuk jelentős részét Európán kívül értékesítik. Megfigyelhető továbbá, hogy
+                Belgium, Hollandia és Németország a termelésük nagy részét exportálják.
+            </p>
+        </div>
+        <figure id="Export"></figure> 
+        <figure id="Import"></figure> 
+    </section>
+
+    <script>
+       
+        var figure_7_spec = "terkep.json";
+        var figure_8_spec = "oszlop.json";
+        var figure_9_spec = "compare.json";
+        var figure_10_spec = "onoff.json";
+        var figure_11_spec = "export.json";
+        var figure_12_spec = "import.json";
+        var figure_13_spec = "line.json";
+
+        vegaEmbed('#Terkep', figure_7_spec)
+        vegaEmbed('#Oszlop', figure_8_spec)
+        vegaEmbed('#Compare', figure_9_spec)
+        vegaEmbed('#Onoff', figure_10_spec)
+        vegaEmbed('#Export', figure_11_spec)
+        vegaEmbed('#Import', figure_12_spec)
+        vegaEmbed('#Line', figure_13_spec)
+
+    </script>
+
+</body>
+    
+</html>
