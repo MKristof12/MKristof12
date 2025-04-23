@@ -1,0 +1,76 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/classicblue8/classicblue8.github.io/main/adatbazis.csv",
+    "format": {"type": "csv"}
+  },
+  "params": [
+    {
+      "name": "selectedMetric",
+      "value": "Consumption",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Employment",
+          "Consumption",
+          "Production",
+          "Cons_Capita",
+          "Nr_Breweries",
+          "Excise_Duty",
+          "Import",
+          "Export"
+        ],
+        "name": "Adat: "
+      }
+    },
+    {
+      "name": "selectedYear",
+      "value": 2022,
+      "bind": {
+        "input": "select",
+        "options": [2016, 2017, 2018, 2019, 2020, 2021, 2022],
+        "name": "Év: "
+      }
+    },
+    {"name": "xTitle", "value": "Consumption", "expr": "selectedMetric"}
+  ],
+  "transform": [
+    {"filter": "datum[selectedMetric] != null && datum.Year == selectedYear"},
+    {"calculate": "datum.id === 'RO' ? 1 : 0", "as": "highlight"},
+    {"calculate": "datum[selectedMetric]", "as": "metricValue"}
+  ],
+  "mark": {"type": "bar"},
+  "encoding": {
+    "y": {
+      "field": "id",
+      "type": "nominal",
+      "title": "Ország",
+      "sort": {"field": "metricValue", "order": "descending"}
+    },
+    "x": {
+      "field": "metricValue",
+      "type": "quantitative",
+      "title": {"signal": "xTitle"}
+    },
+    "color": {
+      "field": "highlight",
+      "type": "nominal",
+      "scale": {"domain": [0, 1], "range": ["#0096FF", "#ff5722"]},
+      "legend": null
+    },
+    "tooltip": [
+      {"field": "id", "title": "Ország"},
+      {"field": "metricValue", "title": {"text": "Mennyiség"}},
+      {"field": "Year", "title": "Év"}
+    ]
+  },
+  "title": {
+    "text": "A kiválasztott mutatók oszlopdiagramja",
+    "subtitle": "brewersofeurope.eu",
+    "subtitleFont": "Arial",
+    "subtitleFontWeight": "lighter"
+  },
+  "width": 670,
+  "height": 500,
+  "config": {"view": {"stroke": "transparent"}}
+}

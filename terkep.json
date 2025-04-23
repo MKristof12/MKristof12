@@ -1,0 +1,81 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {"style": {"cell": {"stroke": "transparent"}}},
+  "title": {
+    "font": "Arial",
+    "text": "Sörtermelés, fogyasztás és egyéb adatok országonkénti bontásban 2022",
+    "anchor": "start",
+    "fontSize": 16,
+    "subtitleFont": "Arial",
+    "subtitleFontWeight": "lighter"
+  },
+  "width": 720,
+  "height": 500,
+  "projection": {"type": "equalEarth"},
+  "data": {
+    "url": "https://raw.githubusercontent.com/jhellingsdata/RADataHub/main/e4e/ch8_Trends/data/chart8_x_europe.topojson",
+    "format": {"type": "topojson", "feature": "europe"}
+  },
+  "transform": [
+    {
+      "lookup": "id",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/classicblue8/classicblue8.github.io/main/adatbazis.csv",
+          "format": {"type": "csv"}
+        },
+        "key": "id",
+        "fields": [
+          "Employment",
+          "Consumption",
+          "Production",
+          "Cons_Capita",
+          "Nr_Breweries",
+          "Excise_Duty",
+          "Import",
+          "Export",
+          "Year"
+        ]
+      }
+    },
+    {"filter": "datum.Year == 2022"},
+    {"calculate": "datum[metric]", "as": "selectedMetric"}
+  ],
+  "params": [
+    {
+      "name": "metric",
+      "value": "Employment",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Employment",
+          "Consumption",
+          "Production",
+          "Cons_Capita",
+          "Nr_Breweries",
+          "Excise_Duty",
+          "Import",
+          "Export"
+        ],
+        "name": "Adat kiválasztása: "
+      }
+    }
+  ],
+  "mark": {"type": "geoshape", "strokeWidth": 0.3, "stroke": "rgba(0,0,0,0.3)"},
+  "encoding": {
+    "color": {
+      "legend": {"title": null},
+      "field": "selectedMetric",
+      "scale": {
+        "range": ["rgb(0, 150, 255)", "rgb(80, 242, 179)", "rgb(235, 61, 75)"]
+      },
+      "type": "quantitative"
+    },
+    "tooltip": [
+      {"field": "id", "title": "ID"},
+      {"field": "selectedMetric", "title": "Data"},
+      {"field": "Year"}
+    ]
+  },
+  "autosize": {"type": "fit-x", "contains": "padding", "resize": false}
+}

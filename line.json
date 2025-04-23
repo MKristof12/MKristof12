@@ -1,0 +1,84 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/classicblue8/classicblue8.github.io/main/adatbazis.csv",
+    "format": {"type": "csv"}
+  },
+  "params": [
+    {
+      "name": "selectedMetric",
+      "value": "Consumption",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Employment",
+          "Consumption",
+          "Production",
+          "Cons_Capita",
+          "Nr_Breweries",
+          "Excise_Duty",
+          "Import",
+          "Export"
+        ],
+        "name": "Adat: "
+      }
+    },
+    {
+      "name": "highlightedCountry",
+      "value": "RO",
+      "bind": {
+        "input": "select",
+        "options": [
+          "AT","BE","BG","HR","CY","CZ","DK","EE","FI","FR","DE","GR","HU","IE","IT","LV","LT","LU","MT","NL","PL","PT","RO","SK","SI","ES","SE","NO","CH","GB"
+        ],
+        "name": "Kiemelt ország: "
+      }
+    }
+  ],
+  "transform": [
+    {"calculate": "datum.id === highlightedCountry ? 1 : 0", "as": "highlight"},
+    {"calculate": "datum[selectedMetric]", "as": "metricValue"}
+  ],
+  "mark": {"type": "line",
+  "point": {
+    "filled": false,
+    "fill": "white"
+  }},
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "title": "Év"
+    },
+    "y": {
+      "field": "metricValue",
+      "type": "quantitative",
+      "title": {"signal": "selectedMetric"}
+    },
+    "color": {
+      "field": "highlight",
+      "type": "nominal",
+      "scale": {"domain": [0, 1], "range": ["#CADCFC", "#ff5722"]},
+      "legend": null
+    },
+    "detail": {
+      "field": "id",
+      "type": "nominal",
+      "title": "Country"
+    },
+    "tooltip": [
+      {"field": "id", "title": "Ország"},
+      {"field": "Year", "title": "Év"},
+      {"field": "metricValue", "title": {"signal": "selectedMetric"}}
+    ]
+  },
+  "title": {
+    "text": "A kiválasztott mérőszámok vonaldiagramja 2016-2022 között",
+    "subtitle": "Minden vonal egy másik országot jelöl",
+    "subtitleFont": "Arial",
+    "subtitleFontWeight": "lighter"
+  },
+  "width": 655,
+  "height": 500,
+  "config": {"view": {"stroke": "transparent"}}
+}
