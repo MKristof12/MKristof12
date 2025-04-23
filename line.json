@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {
-    "url": "https://raw.githubusercontent.com/classicblue8/classicblue8.github.io/main/adatbazis.csv",
+    "url": "https://raw.githubusercontent.com/MKristof12/MKristof12/refs/heads/main/adatbazis.csv",
     "format": {"type": "csv"}
   },
   "params": [
@@ -58,7 +58,7 @@
     "color": {
       "field": "highlight",
       "type": "nominal",
-      "scale": {"domain": [0, 1], "range": ["#CADCFC", "#ff5722"]},
+      "scale": {"domain": [0, 1], "range": ["#CADCFC", "#383837"]},
       "legend": null
     },
     "detail": {

@@ -61,7 +61,7 @@
     "color": {
       "field": "highlight",
       "type": "nominal",
-      "scale": {"domain": [0, 1], "range": ["#0096FF", "#ff5722"]},
+      "scale": {"domain": [0, 1], "range": ["#39AB94", "#122E31"]},
       "legend": null
     },
     "tooltip": [

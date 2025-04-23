@@ -21,7 +21,7 @@
       "lookup": "id",
       "from": {
         "data": {
-          "url": "https://raw.githubusercontent.com/classicblue8/classicblue8.github.io/main/adatbazis.csv",
+          "url": "https://raw.githubusercontent.com/MKristof12/MKristof12/refs/heads/main/adatbazis.csv",
           "format": {"type": "csv"}
         },
         "key": "id",
@@ -61,13 +61,17 @@
       }
     }
   ],
-  "mark": {"type": "geoshape", "strokeWidth": 0.3, "stroke": "rgba(0,0,0,0.3)"},
-  "encoding": {
-    "color": {
-      "legend": {"title": null},
-      "field": "selectedMetric",
-      "scale": {
-        "range": ["rgb(0, 150, 255)", "rgb(80, 242, 179)", "rgb(235, 61, 75)"]
+  "mark": {
+  "type": "geoshape",
+  "strokeWidth": 0.3,
+  "stroke": "rgba(0,0,0,0.3)"
+},
+"encoding": {
+  "color": {
+    "legend": {"title": null},
+    "field": "selectedMetric",
+    "scale": {
+      "range": ["#ADC8CD", "#48B4B4", "#053F3C"]
       },
       "type": "quantitative"
     },
