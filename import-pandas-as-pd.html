@@ -1,0 +1,36 @@
+import pandas as pd
+import plotly.express as px
+
+df = pd.read_csv("adatbazis.csv")
+
+# Például csak néhány országot szűrünk
+countries = ["AUSTRIA", "FRANCE", "GERMANY"]
+df = df[df["Country"].isin(countries)]
+
+fig = px.scatter_3d(
+    df,
+    x="Production",
+    y="Consumption",
+    z="Year",
+    color="Country",
+    title="Sörtermelés és fogyasztás alakulása 3D-ben (Példa országok)",
+    labels={
+        "Production": "Termelés",
+        "Consumption": "Fogyasztás",
+        "Year": "Év"
+    }
+)
+
+fig.update_layout(scene=dict(
+    xaxis_title="Termelés",
+    yaxis_title="Fogyasztás",
+    zaxis_title="Év"
+))
+
+fig.write_html("beer_production_consumption_3d.html")
+
+fig.show()
+import webbrowser
+webbrowser.open("beer_production_consumption_3d.html")
+
+
