@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
-      "url": "https://raw.githubusercontent.com/MKristof12/MKristof12/refs/heads/main/adatbazis.csv",
+      "url": "https://raw.githubusercontent.com/mkristof12/mkristof12/refs/heads/main/adatbazis.csv",
       "format": {"type": "csv"}
     },
     "mark": {"type": "bar", "stack": "normalize"},
