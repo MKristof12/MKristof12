@@ -71,12 +71,23 @@
     ],
     "text": {"field": "id", "type": "nominal"}
   },
+  
+
   "title": {
     "text": "A kiválasztott mutatók szórásdiagramja 2022-ben",
+    "fontSize": 20,
+    "offset": 10,
     "subtitleFont": "Arial",
     "subtitleFontWeight": "lighter"
   },
   "width": 655,
   "height": 655,
-  "config": {"view": {"stroke": "transparent"}}
+  "config": {
+    "view": {"stroke": "transparent"},
+    "title": {
+      "fontSize": 18,
+      "offset": 18},
+    "axis": {
+      "titleFontSize": 18}},
+      "padding":{"left":14,"right":40,"bottom":14, "top":14}
 }

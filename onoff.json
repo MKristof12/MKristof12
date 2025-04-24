@@ -31,9 +31,17 @@
       "text": "On-Trade és Off-Trade megoszlása 2022",
       "subtitle": "Az összes ország százalékos aránya",
       "subtitleFont": "Arial",
-      "subtitleFontSize": 12
+      "subtitleFontSize": 13
     },
     "width": 675,
-    "height": 500
+    "height": 500,
+    "config": {
+    "view": {"stroke": "transparent"},
+    "title": {
+      "fontSize": 18,
+      "offset": 18},
+    "axis": {
+      "titleFontSize": 18}},
+      "padding":{"left":14,"right":15,"bottom":14, "top":14}
   }
   

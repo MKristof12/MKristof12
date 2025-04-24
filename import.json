@@ -25,11 +25,20 @@
     ],
     "title": {
       "text": "Összes import 2022-ben",
-      "subtitle": "Intra-EU és Extra-EU 1000 hektoliterben (HL) kifejezve",
+      "subtitle": "Intra-EU és Extra-EU 1000 hektoliterben kifejezve",
       "subtitleFont": "Arial",
-      "subtitleFontSize": 12
+      "subtitleFontSize": 13
+
     },
     "width": 675,
-    "height": 500
+    "height": 500,
+    "config":{
+    "view": {"stroke": "transparent"},
+    "title": {
+      "fontSize": 18,
+      "offset": 18},
+    "axis": {
+      "titleFontSize": 18}},
+      "padding":{"left":14,"right":15,"bottom":14, "top":14}
   }
   

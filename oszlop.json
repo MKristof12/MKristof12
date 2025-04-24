@@ -66,11 +66,17 @@
   },
   "title": {
     "text": "A kiválasztott mutatók oszlopdiagramja",
-    "subtitle": "brewersofeurope.eu",
     "subtitleFont": "Arial",
     "subtitleFontWeight": "lighter"
   },
   "width": 670,
   "height": 500,
-  "config": {"view": {"stroke": "transparent"}}
+  "config": {
+    "view": {"stroke": "transparent"},
+    "title": {
+      "fontSize": 18,
+      "offset": 18},
+    "axis": {
+      "titleFontSize": 18}},
+      "padding":{"left":14,"right":15,"bottom":14, "top":14}
 }

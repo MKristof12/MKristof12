@@ -4,13 +4,14 @@
   "title": {
     "font": "Arial",
     "text": "Sörtermelés, fogyasztás és egyéb adatok országonkénti bontásban 2022",
-    "anchor": "start",
-    "fontSize": 16,
+    "fontSize": 18,
     "subtitleFont": "Arial",
     "subtitleFontWeight": "lighter"
   },
   "width": 720,
   "height": 500,
+  "config": {
+      "padding":{"left":14,"right":15,"bottom":15, "top":15}},
   "projection": {"type": "equalEarth"},
   "data": {
     "url": "https://raw.githubusercontent.com/jhellingsdata/RADataHub/main/e4e/ch8_Trends/data/chart8_x_europe.topojson",
