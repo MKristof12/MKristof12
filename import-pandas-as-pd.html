@@ -3,7 +3,7 @@ import plotly.express as px
 
 df = pd.read_csv("adatbazis.csv")
 
-# Például csak néhány országot szűrünk
+
 countries = ["AUSTRIA", "FRANCE", "GERMANY"]
 df = df[df["Country"].isin(countries)]
 

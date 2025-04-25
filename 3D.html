@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>Sörtermelés és fogyasztás 3D vizualizáció</title>
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+  <h1 style="text-align:center;">Sörtermelés és fogyasztás alakulása 3D-ben (Példa országok)</h1>
+
+  <div id="plotly-graph" style="width: 90%; height: 90vh; margin: auto;"></div>
+
+  <script>
+    d3.csv("https://raw.githubusercontent.com/mkristof12/mkristof12/refs/heads/main/adatbazis.csv").then(function(data) {
+      let countries = {};
+      data.forEach(row => {
+        let country = row["Country"];
+        if (!countries[country]) {
+          countries[country] = {x: [], y: [], z: []};
+        }
+        countries[country].x.push(+row["Production"]); 
+        countries[country].y.push(+row["Consumption"]);
+        countries[country].z.push(+row["Year"]);
+      });
+      let plotlyData = [];
+      for (let country in countries) {
+        plotlyData.push({
+          x: countries[country].x,
+          y: countries[country].y,
+          z: countries[country].z,
+          mode: 'markers',
+          type: 'scatter3d',
+          marker: { size: 5 },
+          name: country
+        });
+      }
+      let layout = {
+        scene: {
+          xaxis: { title: 'Termelés' },
+          yaxis: { title: 'Fogyasztás' },
+          zaxis: { title: 'Év' }
+        }
+      };
+
+      Plotly.newPlot('plotly-graph', plotlyData, layout);
+    });
+  </script>
+</body>
+</html>
+
